@@ -13,13 +13,13 @@
 
     <fragment
         android:id="@+id/navigation_bills"
-        android:name="com.example.personalfinance.ui.dashboard.BillsFragment"
+        android:name="com.example.personalfinance.ui.bills.BillsFragment"
         android:label="@string/title_bills"
         tools:layout="@layout/fragment_bills" />
 
     <fragment
         android:id="@+id/navigation_stats"
-        android:name="com.example.personalfinance.ui.notifications.StatsFragment"
+        android:name="com.example.personalfinance.ui.stats.StatsFragment"
         android:label="@string/title_stats"
         tools:layout="@layout/fragment_stats" />
 </navigation>

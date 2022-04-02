@@ -1,4 +1,4 @@
-package com.example.personalfinance.ui.trans
+package com.example.personalfinance.ui.bills
 
 import android.app.Application
 import androidx.lifecycle.LiveData
@@ -11,7 +11,7 @@ import com.example.personalfinance.room.transactionRoom.TransactionDatabase
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
-class TransactionViewModel(private val application: Application) : ViewModel() {
+class BillsViewModel(application: Application) : ViewModel() {
 
     private val repository: TransactionRepository
     val allTransactions : LiveData<List<Transaction>>
@@ -30,5 +30,4 @@ class TransactionViewModel(private val application: Application) : ViewModel() {
     fun deleteTransaction(transaction: Transaction) = viewModelScope.launch(Dispatchers.IO) {
         repository.deleteTransaction(transaction)
     }
-
 }
