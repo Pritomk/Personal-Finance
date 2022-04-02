@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@+id/navigation_transaction">
+
+    <fragment
+        android:id="@+id/navigation_transaction"
+        android:name="com.example.personalfinance.ui.trans.TransactionFragment"
+        android:label="@string/title_transaction"
+        tools:layout="@layout/fragment_transaction" />
+
+    <fragment
+        android:id="@+id/navigation_bills"
+        android:name="com.example.personalfinance.ui.dashboard.BillsFragment"
+        android:label="@string/title_bills"
+        tools:layout="@layout/fragment_bills" />
+
+    <fragment
+        android:id="@+id/navigation_stats"
+        android:name="com.example.personalfinance.ui.notifications.StatsFragment"
+        android:label="@string/title_stats"
+        tools:layout="@layout/fragment_stats" />
+</navigation>
