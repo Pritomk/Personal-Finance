@@ -16,6 +16,10 @@ class BillsAdapter(private val listener : BillItemClicked): RecyclerView.Adapter
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BillViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.bill_item, parent, false)
         val viewHolder = BillViewHolder(view)
+
+        view.setOnClickListener {
+            listener.onBillItemClicked(billList[viewHolder.adapterPosition])
+        }
         return viewHolder
     }
 
@@ -61,5 +65,5 @@ class BillViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView), View.O
 }
 
 interface BillItemClicked {
-    fun onBillItemClicked()
+    fun onBillItemClicked(bill: Bill)
 }

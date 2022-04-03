@@ -13,6 +13,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.personalfinance.databinding.FragmentBillsBinding
+import com.example.personalfinance.gpay.CheckoutActivity
 import com.example.personalfinance.room.billRoom.Bill
 import com.example.personalfinance.ui.utils.AddButtonClicked
 import com.example.personalfinance.ui.utils.MyDialog
@@ -140,8 +141,11 @@ class BillsFragment : Fragment(), AddButtonClicked, BillItemClicked {
 
     }
 
-    override fun onBillItemClicked() {
-
+    override fun onBillItemClicked(bill: Bill) {
+        val intent = Intent(requireContext(), CheckoutActivity::class.java)
+        intent.putExtra("price", bill.amount)
+        intent.putExtra("name", bill.billName)
+        startActivity(intent)
     }
 
 
