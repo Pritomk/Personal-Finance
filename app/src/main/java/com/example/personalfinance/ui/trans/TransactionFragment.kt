@@ -9,6 +9,8 @@ import android.widget.TextView
 import android.widget.TimePicker
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.example.personalfinance.databinding.FragmentTransactionBinding
 import com.example.personalfinance.room.transactionRoom.Transaction
 import com.example.personalfinance.ui.bills.BillsViewModel
@@ -18,8 +20,10 @@ import com.example.personalfinance.ui.utils.MyDialog
 import com.example.personalfinance.ui.utils.OnCalenderClickListener
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import java.util.*
+import kotlin.collections.ArrayList
 
-class TransactionFragment : Fragment(), AddButtonClicked, OnCalenderClickListener {
+class TransactionFragment : Fragment(), AddButtonClicked, OnCalenderClickListener,
+    TransactionItemClicked {
 
     private var _binding: FragmentTransactionBinding? = null
 
@@ -31,6 +35,8 @@ class TransactionFragment : Fragment(), AddButtonClicked, OnCalenderClickListene
     private lateinit var transactionViewModel: TransactionViewModel
     private lateinit var fab: FloatingActionButton
     private lateinit var calendar: MyCalender
+    private lateinit var transactionAdapter: TransactionAdapter
+    private lateinit var transactionRecyclerView: RecyclerView
 
 
     override fun onCreateView(
@@ -47,6 +53,8 @@ class TransactionFragment : Fragment(), AddButtonClicked, OnCalenderClickListene
         dialog = MyDialog(this)
         fab = binding.fab
         calendar = MyCalender(this)
+        transactionAdapter = TransactionAdapter(this)
+        transactionRecyclerView = binding.transRecycler
 
         return root
     }
@@ -58,6 +66,16 @@ class TransactionFragment : Fragment(), AddButtonClicked, OnCalenderClickListene
             setupDialog()
         }
 
+        setupTransactionRecycler()
+
+    }
+
+    private fun setupTransactionRecycler() {
+        transactionRecyclerView.adapter = transactionAdapter
+        transactionRecyclerView.layoutManager = LinearLayoutManager(activity)
+        transactionViewModel.allTransactions.observe(viewLifecycleOwner) {
+            transactionAdapter.updateList(it as ArrayList<Transaction>)
+        }
     }
 
     private fun setupDialog() {
@@ -79,8 +97,16 @@ class TransactionFragment : Fragment(), AddButtonClicked, OnCalenderClickListene
 
     }
 
+    override fun onBillAddButtonClicked(text01: String, text02: Int, dateKey: String) {
+
+    }
+
     override fun onCalenderClicked(year: Int, month: Int, day: Int) {
         calendar.setDate(year, month, day)
+    }
+
+    override fun onTransactionItemClicked() {
+
     }
 
 

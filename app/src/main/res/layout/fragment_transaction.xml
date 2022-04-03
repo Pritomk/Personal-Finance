@@ -10,21 +10,19 @@
         android:id="@+id/date_picker"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        tools:text="Today"
-        android:textStyle="bold"
         android:layout_alignParentTop="true"
-        android:layout_marginTop="10dp"
+        android:layout_centerHorizontal="true"
+        android:textColor="@color/black"
         android:textSize="30sp"
-        android:textColor="@color/black"/>
+        android:textStyle="bold"
+        android:text="Today" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/trans_recycler"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/date_picker"
-        android:layout_marginTop="10dp"
-        android:layout_margin="20dp"/>
+        android:layout_marginTop="10dp"/>
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/fab"
