@@ -17,11 +17,24 @@
         android:textStyle="bold"
         android:text="Today" />
 
+    <TextView
+        android:id="@+id/pnl_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:text="+10"
+        android:layout_below="@id/date_picker"
+        android:layout_centerHorizontal="true"
+        android:textStyle="bold"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
+        android:textSize="25dp"
+        android:textColor="@color/teal_200"/>
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/trans_recycler"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/date_picker"
+        android:layout_below="@+id/pnl_tv"
         android:layout_marginTop="10dp"/>
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton

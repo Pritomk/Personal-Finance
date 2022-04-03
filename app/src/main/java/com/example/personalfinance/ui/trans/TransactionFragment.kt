@@ -11,6 +11,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.personalfinance.R
 import com.example.personalfinance.databinding.FragmentTransactionBinding
 import com.example.personalfinance.room.transactionRoom.Transaction
 import com.example.personalfinance.ui.bills.BillsViewModel
@@ -37,6 +38,8 @@ class TransactionFragment : Fragment(), AddButtonClicked, OnCalenderClickListene
     private lateinit var calendar: MyCalender
     private lateinit var transactionAdapter: TransactionAdapter
     private lateinit var transactionRecyclerView: RecyclerView
+    private lateinit var dateTextView: TextView
+    private lateinit var pnlTextView: TextView
 
 
     override fun onCreateView(
@@ -45,16 +48,20 @@ class TransactionFragment : Fragment(), AddButtonClicked, OnCalenderClickListene
         savedInstanceState: Bundle?
     ): View {
         transactionViewModel =
-            ViewModelProvider(this, TransactionViewModelFactory(requireActivity().application)).get(TransactionViewModel::class.java)
+            ViewModelProvider(this, TransactionViewModelFactory(requireActivity().application)).get(
+                TransactionViewModel::class.java
+            )
 
         _binding = FragmentTransactionBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
         dialog = MyDialog(this)
         fab = binding.fab
+        dateTextView = binding.datePicker
         calendar = MyCalender(this)
         transactionAdapter = TransactionAdapter(this)
         transactionRecyclerView = binding.transRecycler
+        pnlTextView = binding.pnlTv
 
         return root
     }
@@ -66,6 +73,10 @@ class TransactionFragment : Fragment(), AddButtonClicked, OnCalenderClickListene
             setupDialog()
         }
 
+        dateTextView.setOnClickListener {
+            fragmentManager?.let { it1 -> calendar.show(it1,"") }
+        }
+
         setupTransactionRecycler()
 
     }
@@ -73,10 +84,33 @@ class TransactionFragment : Fragment(), AddButtonClicked, OnCalenderClickListene
     private fun setupTransactionRecycler() {
         transactionRecyclerView.adapter = transactionAdapter
         transactionRecyclerView.layoutManager = LinearLayoutManager(activity)
-        transactionViewModel.allTransactions.observe(viewLifecycleOwner) {
-            transactionAdapter.updateList(it as ArrayList<Transaction>)
+        calendar.getDate()?.let {
+            transactionViewModel.dateTransactions(it).observe(viewLifecycleOwner) {
+                setupPnL(it);
+                transactionAdapter.updateList(it as ArrayList<Transaction>)
+
+            }
         }
     }
+
+    private fun setupPnL(list: List<Transaction>?) {
+        var pnl = 0
+        for (i in 0 until list!!.size) {
+            val item = list[i]
+            if (item.status) {
+                pnl += item.amount
+            } else {
+                pnl -= item.amount
+            }
+        }
+        pnlTextView.text = pnl.toString()
+        if (pnl > 0)
+            pnlTextView.setTextColor(resources.getColor(R.color.teal_200))
+        else if (pnl < 0)
+            pnlTextView.setTextColor(resources.getColor(R.color.red))
+
+    }
+
 
     private fun setupDialog() {
         dialog.show(requireFragmentManager(), dialog.TRANSACTION_ADD_DIALOG)
@@ -93,7 +127,16 @@ class TransactionFragment : Fragment(), AddButtonClicked, OnCalenderClickListene
         status: Boolean,
         timeKey: String
     ) {
-        transactionViewModel.insertTransaction(Transaction(0,text01,text02,status,calendar.getDate()!!, timeKey))
+        transactionViewModel.insertTransaction(
+            Transaction(
+                0,
+                text01,
+                text02,
+                status,
+                calendar.getDate()!!,
+                timeKey
+            )
+        )
 
     }
 
@@ -103,6 +146,10 @@ class TransactionFragment : Fragment(), AddButtonClicked, OnCalenderClickListene
 
     override fun onCalenderClicked(year: Int, month: Int, day: Int) {
         calendar.setDate(year, month, day)
+        dateTextView.text = calendar.getDate()
+
+
+        setupTransactionRecycler()
     }
 
     override fun onTransactionItemClicked() {

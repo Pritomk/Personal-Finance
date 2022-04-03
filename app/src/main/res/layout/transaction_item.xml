@@ -13,23 +13,24 @@
         android:layout_height="wrap_content"
         tools:text="DemoText"
         android:textColor="@color/black"
-        android:textStyle="bold"/>
+        android:textStyle="bold"
+        android:textSize="25sp"/>
 
     <TextView
         android:id="@+id/transaction_item_amount"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         tools:text="500Rs"
-        android:textSize="10sp"
+        android:textSize="20sp"
         android:textStyle="italic"
         android:layout_marginStart="10dp"
-        android:textColor="@color/purple_700"/>
+        android:textColor="@color/purple_700" />
 
     <TextView
         android:id="@+id/transaction_item_time"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="10dp"
+        android:textSize="20sp"
         android:layout_marginStart="5dp"
         tools:text="22:10"/>
 

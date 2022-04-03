@@ -18,4 +18,8 @@ class TransactionRepository(private val dao: TransactionDao) {
         return dao.getTransactions()
     }
 
+    fun getDateTransactions(dateKey: String) : LiveData<List<Transaction>> {
+        return dao.getDateTransactions(dateKey)
+    }
+
 }

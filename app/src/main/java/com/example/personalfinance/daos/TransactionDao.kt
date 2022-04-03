@@ -18,4 +18,7 @@ interface TransactionDao {
 
     @Query("Select * from transaction_table order by tid ASC")
     fun getTransactions() : LiveData<List<Transaction>>
+
+    @Query("Select * from transaction_table where dateKey = :dateKey order by tid ASC")
+    fun getDateTransactions(dateKey: String) : LiveData<List<Transaction>>
 }

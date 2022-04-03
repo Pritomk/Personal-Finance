@@ -31,4 +31,8 @@ class TransactionViewModel(private val application: Application) : ViewModel() {
         repository.deleteTransaction(transaction)
     }
 
+    fun dateTransactions(dateKey: String) : LiveData<List<Transaction>> {
+        return repository.getDateTransactions(dateKey)
+    }
+
 }

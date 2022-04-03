@@ -4,6 +4,8 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="app/src/main/res/layout-v28/fragment_bills.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/activity_bar_chart.xml" value="0.3229166666666667" />
+        <entry key="app/src/main/res/layout/activity_chart.xml" value="0.3229166666666667" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.3229166666666667" />
         <entry key="app/src/main/res/layout/activity_main2.xml" value="0.30520833333333336" />
         <entry key="app/src/main/res/layout/activity_paid_bills.xml" value="0.3229166666666667" />
@@ -11,6 +13,7 @@
         <entry key="app/src/main/res/layout/bill_item.xml" value="0.1" />
         <entry key="app/src/main/res/layout/fragment_bill_dialog.xml" value="0.264" />
         <entry key="app/src/main/res/layout/fragment_bills.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/fragment_stats.xml" value="0.3229166666666667" />
         <entry key="app/src/main/res/layout/fragment_transaction.xml" value="0.3229166666666667" />
         <entry key="app/src/main/res/layout/fragmnet_dialog.xml" value="0.3229166666666667" />
         <entry key="app/src/main/res/layout/fragmnet_transaction_dialog.xml" value="0.36574074074074076" />
