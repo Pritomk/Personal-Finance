@@ -24,7 +24,7 @@ class SplashActivity : AppCompatActivity() {
         val thread = object : Thread() {
             override fun run() {
                 try {
-                    sleep(3000)
+                    sleep(2000)
                     startActivity(Intent(this@SplashActivity, MainActivity::class.java))
                     finish()
                 } catch (e: Exception) {
