@@ -20,7 +20,9 @@
             android:textStyle="bold"
             android:textSize="20sp"
             android:layout_gravity="center_horizontal"
-            android:layout_marginBottom="30dp"/>
+            android:layout_marginBottom="30dp"
+            android:background="@drawable/bills_bag"
+            android:padding="4dp"/>
 
         <RadioGroup
             android:id="@+id/radioGroup"
@@ -51,7 +53,7 @@
         <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="edt01"
+            android:hint="Item Description"
             android:layout_margin="8dp"
             android:inputType="text"
             android:id="@+id/edt01"/>
@@ -59,7 +61,7 @@
         <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="edt02"
+            android:hint="Amount"
             android:layout_margin="8dp"
             android:inputType="number"
             android:id="@+id/edt02"/>

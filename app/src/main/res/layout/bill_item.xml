@@ -2,39 +2,52 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="70dp"
-    android:layout_margin="5dp"
-    xmlns:tools="http://schemas.android.com/tools">
+    android:layout_margin="4dp"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:background="@drawable/bills_bag"
+    android:padding="8dp">
 
-    <TextView
-        android:id="@+id/bill_item_name"
+    <LinearLayout
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        tools:text="DemoText"
-        android:textColor="@color/black"
-        android:textStyle="bold"
-        android:textSize="25sp"
-        android:layout_weight="0.33"/>
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:layout_weight="40">
+        <TextView
+            android:id="@+id/bill_item_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:text="DemoText"
+            android:textColor="@color/black"
+            android:textStyle="bold"
+            android:textSize="28sp"
+            android:layout_weight="0.33"/>
+
+
+        <TextView
+            android:id="@+id/bill_date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="16sp"
+            android:layout_marginStart="5dp"
+            tools:text="03.05.2022"
+            android:textColor="#DD2C2C2C"
+            android:textStyle="bold"
+            android:layout_weight="0.33"/>
+
+    </LinearLayout>
 
     <TextView
         android:id="@+id/bill_item_amount"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         tools:text="500Rs"
-        android:textSize="20sp"
-        android:textStyle="italic"
-        android:layout_marginStart="10dp"
-        android:textColor="@color/purple_700"
-        android:layout_weight="0.33"/>
-
-    <TextView
-        android:id="@+id/bill_date"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
         android:textSize="30sp"
-        android:layout_marginStart="5dp"
-        tools:text="03.05.2022"
-        android:textColor="@color/black"
-        android:textStyle="bold"
-        android:layout_weight="0.33"/>
+        android:textStyle="bold|italic"
+        android:textColor="@color/red"
+        android:layout_weight="40"
+        android:gravity="center"/>
+
+
+
 
 </LinearLayout>

@@ -1,44 +1,61 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="40dp"
+    android:layout_height="70dp"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_margin="5dp"
-    android:padding="5dp"
-    android:orientation="horizontal">
+    android:padding="8dp"
+    android:orientation="horizontal"
+    android:background="@drawable/bills_bag">
 
-    <TextView
-        android:id="@+id/transaction_item_name"
+    <LinearLayout
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        tools:text="DemoText"
-        android:textColor="@color/black"
-        android:textStyle="bold"
-        android:textSize="25sp"/>
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:layout_weight="50">
+
+        <TextView
+            android:id="@+id/transaction_item_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:text="DemoText"
+            android:textColor="@color/black"
+            android:textStyle="bold"
+            android:textSize="25sp"/>
+
+        <TextView
+            android:id="@+id/transaction_item_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="20sp"
+            android:layout_marginStart="5dp"
+            tools:text="at 22:10"/>
+
+
+    </LinearLayout>
+
 
     <TextView
         android:id="@+id/transaction_item_amount"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         tools:text="500Rs"
-        android:textSize="20sp"
-        android:textStyle="italic"
+        android:textSize="28sp"
+        android:textStyle="bold"
         android:layout_marginStart="10dp"
-        android:textColor="@color/purple_700" />
+        android:textColor="@color/purple_700"
+        android:layout_weight="25"
+        android:layout_gravity="center_vertical"/>
 
-    <TextView
-        android:id="@+id/transaction_item_time"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textSize="20sp"
-        android:layout_marginStart="5dp"
-        tools:text="22:10"/>
 
     <ImageView
         android:id="@+id/transaction_item_status"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:src="@drawable/ic_up_arrow"
-        android:layout_marginStart="5dp"/>
+        android:layout_marginStart="5dp"
+        android:layout_gravity="center"
+        android:layout_weight="25"
+        android:background="@drawable/arrow_bg"/>
 
 </LinearLayout>

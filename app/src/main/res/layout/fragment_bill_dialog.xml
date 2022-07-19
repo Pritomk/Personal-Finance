@@ -31,7 +31,7 @@
         <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="edt01"
+            android:hint="Item Name"
             android:layout_margin="8dp"
             android:inputType="text"
             android:id="@+id/edt01"/>
@@ -39,7 +39,7 @@
         <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="edt02"
+            android:hint="Amount"
             android:layout_margin="8dp"
             android:inputType="number"
             android:id="@+id/edt02"/>
